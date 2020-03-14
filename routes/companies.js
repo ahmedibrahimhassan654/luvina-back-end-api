@@ -2,30 +2,30 @@ const express = require( 'express' )
 const router = express.Router()
 
 
-router.get( '/api/v1/companies', ( req, res ) =>
+router.get( '/', ( req, res ) =>
 {
     res.status(200).json({sucess:true,msg:'show all companies'})
 } )
 
-router.post( '/api/v1/companies', ( req, res ) =>
+router.post( '/', ( req, res ) =>
 {
     res.status(200).json({sucess:true,msg:'new company created'})
 } )
 
-router.get( '/api/v1/companies/:id', ( req, res ) =>
+router.get( '/:id', ( req, res ) =>
 {
     res.status(200).json({sucess:true, msg:`caompany with ${req.params.id} `})
 } )
 
-router.put( '/api/v1/companies/:id', ( req, res ) =>
+router.put( '/:id', ( req, res ) =>
 {
     res.status(200).json({sucess:true,msg:`caompany with ${req.params.id} updated`})
 })
 
-router.delete( '/api/v1/companies/:id', ( req, res ) =>
+router.delete( '/:id', ( req, res ) =>
 {
     res.status(200).json({sucess:true,msg:`caompany with ${req.params.id} deleted`})
 })
 
 
-module.exports
+module.exports=router

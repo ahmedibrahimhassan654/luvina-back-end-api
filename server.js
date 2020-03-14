@@ -12,7 +12,8 @@ dotenv.config( { path: './config/config.env' } )
 const app = express()
 
 
-
+//mount routers
+app.use('/api/v1/companies',companies)
 
 
 const PORT = process.env.PORT || 5000;
