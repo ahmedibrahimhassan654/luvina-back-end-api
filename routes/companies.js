@@ -1,31 +1,22 @@
 const express = require( 'express' )
+const {
+    creatCompany,
+    deleteCompany,
+    updateCompany,
+    getCompany,
+    getCompanies
+
+} = require( '../controllers/companies' )
 const router = express.Router()
 
+router
+    .route( '/' )
+    .get(  getCompanies)
+    .post( creatCompany ) 
 
-router.get( '/', ( req, res ) =>
-{
-    res.status(200).json({sucess:true,msg:'show all companies'})
-} )
-
-router.post( '/', ( req, res ) =>
-{
-    res.status(200).json({sucess:true,msg:'new company created'})
-} )
-
-router.get( '/:id', ( req, res ) =>
-{
-    res.status(200).json({sucess:true, msg:`caompany with ${req.params.id} `})
-} )
-
-router.put( '/:id', ( req, res ) =>
-{
-    res.status(200).json({sucess:true,msg:`caompany with ${req.params.id} updated`})
-})
-
-router.delete( '/:id', ( req, res ) =>
-{
-    res.status(200).json({sucess:true,msg:`caompany with ${req.params.id} deleted`})
-})
-
-
+router
+    .route( '/:id' )
+    .get(getCompany)
+    .put( updateCompany )
+    .delete(deleteCompany)
 module.exports=router
