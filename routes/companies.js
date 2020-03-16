@@ -11,7 +11,7 @@ const router = express.Router()
 
 router
     .route( '/' )
-    .get(  getCompanies)
+    .get( getCompanies)
     .post( creatCompany ) 
 
 router

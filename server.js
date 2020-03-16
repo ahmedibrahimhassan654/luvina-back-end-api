@@ -26,6 +26,8 @@ const companies=require('./routes/companies')
 
 const app = express()
 
+app.use( express.json() );
+
 
 
 //dev logging middleware

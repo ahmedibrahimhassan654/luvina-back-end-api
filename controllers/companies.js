@@ -1,14 +1,18 @@
-//@desc  get all companies
-//@route GET /api/v1/companies
-//@route public
-
+    const Company=require('../models/company')
+    //@desc  get all companies
+    //@route GET /api/v1/companies
+    //@route public
 exports.getCompanies = ( req, res, next ) =>
 {
+
+console.log(req.body);
+
+ 
     res.status( 200 ).json( {
-        sucess: true,
-        msg: 'show all companies'
-    } )
-}
+            sucess: true,
+            msg: 'show all companies'
+        } )
+    }
 
 //@desc  get single company
 //@route GET /api/v1/companies/:id
@@ -25,10 +29,18 @@ exports.getCompany = ( req, res, next ) =>
 //@route post /api/v1/companies
 //@route private
 
-exports.creatCompany= ( req, res, next ) =>
+exports.creatCompany= async ( req, res, next ) =>
 {
-    res.status(200).json({sucess:true,msg:'new company created'})
-
+    try {
+        const company = await Company.create( req.body )
+        res.status( 201 ).json( {
+        sucess: true,
+        data:company
+    })  
+    } catch (error) {
+        res.status(400).json({sucess:false})
+    }
+  
 }
 
 //@desc  update  company
