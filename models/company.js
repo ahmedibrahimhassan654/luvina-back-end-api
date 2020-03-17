@@ -135,7 +135,45 @@ const CompanySchema = new mongoose.Schema( {
         type: Number,
         min: [1, 'Rating must be at least 1'],
         max: [10, 'Rating must can not be more than 10']
+  },
+  branches: [{
+    brancheName: {
+      type: String,
+      // unique:true,
+        required: [true, 'Please add a name'],
+        trim: true,
+        maxlength: [50, 'Name can not be more than 50 characters']
     },
+    branchManger: {
+      type: String,
+      // unique:true,
+        required: [true, 'Please add a name'],
+        trim: true,
+        maxlength: [50, 'Name can not be more than 50 characters']
+    },
+    branchAddress: {
+      type: String,
+      required: [true, 'Please add an address']
+  },
+
+    branchlocation: {
+      // GeoJSON Point
+      type: {
+        type: String,
+        enum: ['Point']
+      },
+      coordinates: {
+        type: [Number],
+        index: '2dsphere'
+      },
+      formattedAddress: String,
+      street: String,
+      city: String,
+      state: String,
+      zipcode: String,
+      country: String
+  }
+    }],
     
       createdAt: {
         type: Date,
