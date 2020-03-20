@@ -1,7 +1,10 @@
 const express = require( 'express' )
 const dotenv = require( "dotenv" )
 const morgan = require( 'morgan' )
+const errorHandler=require('./middleware/error')
 const colors = require( 'colors' )
+
+
 const connectDB=require('./config/db')
 
 
@@ -26,6 +29,8 @@ const companies=require('./routes/companies')
 
 const app = express()
 
+
+
 app.use( express.json() );
 
 
@@ -39,7 +44,9 @@ if ( process.env.NODE_ENV === 'development' )
 
 
 //mount routers
-app.use('/api/v1/companies',companies)
+app.use( '/api/v1/companies', companies )
+
+app.use(errorHandler);
 
 
 

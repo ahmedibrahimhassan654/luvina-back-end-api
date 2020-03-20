@@ -1,13 +1,14 @@
 const mongoose = require( 'mongoose' )
+const slugify=require('slugify')
 
 const CompanySchema = new mongoose.Schema( {
     
     companyName: {
     type: String,
-      // unique:true,
-        required: [true, 'Please add a name'],
-        trim: true,
-        maxlength: [50, 'Name can not be more than 50 characters']
+    required: [true, 'Please add a name'],
+    unique: true,
+    trim: true,
+    maxlength: [50, 'Name can not be more than 50 characters']
       },
       slug: String,
       description: {
@@ -136,7 +137,8 @@ const CompanySchema = new mongoose.Schema( {
         min: [1, 'Rating must be at least 1'],
         max: [10, 'Rating must can not be more than 10']
   },
-  branches: [{
+  branches: [
+    {
     brancheName: {
       type: String,
       // unique:true,
@@ -172,16 +174,39 @@ const CompanySchema = new mongoose.Schema( {
       state: String,
       zipcode: String,
       country: String
-  }
-    }],
+    },
+    brancheEmail: {
+      type: String,
+      match: [
+        /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
+        'Please add a valid email'
+      ]
+    },
+    brancheTelephneNumber: {
+      type: String,
+      maxlength: [20, 'Phone number can not be longer than 20 characters']
+    },
+    createdAt: {
+      type: Date,
+      default: Date.now
+    }
+    }
+  ],
     
       createdAt: {
         type: Date,
         default: Date.now
       },
-
-
-
 } )
+
+
+
+CompanySchema.pre( 'save', function ( next )
+{
+this.slug=slugify(this.companyName,{lower:true})
+  next()
+  
+})
+
 
 module.exports = mongoose.model('Company', CompanySchema);

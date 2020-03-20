@@ -4,7 +4,10 @@ const {
     deleteCompany,
     updateCompany,
     getCompany,
-    getCompanies
+    getCompanies,
+    addBranche,
+    deletBranch,
+    updateBranche
 
 } = require( '../controllers/companies' )
 const router = express.Router()
@@ -18,5 +21,9 @@ router
     .route( '/:id' )
     .get(getCompany)
     .put( updateCompany )
-    .delete(deleteCompany)
+    .delete( deleteCompany )
+    
+router.route( '/:id/branche' ).put( addBranche )
+router.route( '/:id/branche/:bran_id' ).delete( deletBranch )
+router.route('/:id/branche/:bran_id').put(updateBranche)
 module.exports=router
