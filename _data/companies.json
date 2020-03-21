@@ -2,7 +2,7 @@
 	{
 	"_id": "5d713995b721c3bb38c1f5d0",
 	"user": "5d7a514b5d2c12c7449be045",	
-	"companyName":"elazaby pharmacy 1",
+	"companyName":"elazaby pharmacy",
 	"description":"pharmacy new",
 	"companyPhone":"(002) 01065619208",
 	"companyEmail":"elazaby@gmail.com",
@@ -16,9 +16,9 @@
 	"files":["segel togary","betaka darebia","another files "]
 	},
 	{
-		"_id": "5d713a66ec8f2b88b8f830b8",
-		"user": "5d7a514b5d2c12c7449be046",
-		"companyName":"soad pharmacy",
+	"_id": "5d713a66ec8f2b88b8f830b8",
+	"user": "5d7a514b5d2c12c7449be046",
+	"companyName":"soad pharmacy1",
 	"description":"pharmacy new",
 	"companyPhone":"(002) 01222371262",
 	"companyEmail":"soad@gmail.com",
@@ -32,26 +32,11 @@
 	"files":["segel togary","betaka darebia","another files "]
 	
 	},
+
 	{
 		"_id": "5d725a037b292f5f8ceff787",
-		"user": "5c8a1d5b0190b214360dc031",
-		"companyName":"saif pharmacy",
-		"description":"pharmacy new 3",
-		"companyPhone":"(002) 01222371262",
-		"companyEmail":"saif2@gmail.com",
-		"companyAddress":"422 naser-city cairo egypt 11765",
-		"companyManger":"haitham Ahmed ibrahim",
-		"companyMangerTelphoneNumber":"(010)656-19208",
-		"selerStatus":"Supplier",
-		"delivery":"Through the shipping company",
-		"saleWay":"from the same place",
-		"saleAddress":"422 elobour-city elqalubia egypt 11828",
-		"files":["segel togary","betaka darebia","another files "]
-	},
-	{
-		"_id": "5d725a1b7b292f5f8ceff788",
 		"user": "5c8a1d5b0190b214360dc032",
-		"companyName":"soad pharmacy ",
+		"companyName":"soad pharmacy2 ",
 		"description":"pharmacy new 3",
 		"companyPhone":"(002) 01222371262",
 		"companyEmail":"saif2@gmail.com",

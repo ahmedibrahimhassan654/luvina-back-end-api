@@ -1,5 +1,6 @@
 const mongoose = require( 'mongoose' )
-const slugify=require('slugify')
+const slugify = require( 'slugify' )
+const geocoder=require('../utils/geocoder')
 
 const CompanySchema = new mongoose.Schema( {
     
@@ -45,10 +46,10 @@ const CompanySchema = new mongoose.Schema( {
 
       companyAddress: {
         type: String,
-        required: [true, 'Please add an address']
+        required: [true, 'Please add company address']
     },
   
-      companylocation: {
+      location: {
         // GeoJSON Point
         type: {
           type: String,
@@ -94,14 +95,14 @@ const CompanySchema = new mongoose.Schema( {
         type: String,
         enum: [
           'from the same place',
-          'from diffrent places ',
+          'from diffrent places',
         ]
     },
    
 
     saleAddress: {
         type: String,
-        required: [true, 'Please add an address']
+        required: [true, 'Please add an sale address']
       },
     salelocation: {
         // GeoJSON Point
@@ -137,67 +138,16 @@ const CompanySchema = new mongoose.Schema( {
         min: [1, 'Rating must be at least 1'],
         max: [10, 'Rating must can not be more than 10']
   },
-  branches: [
-    {
-    brancheName: {
-      type: String,
-      // unique:true,
-        required: [true, 'Please add a name'],
-        trim: true,
-        maxlength: [50, 'Name can not be more than 50 characters']
-    },
-    branchManger: {
-      type: String,
-      // unique:true,
-        required: [true, 'Please add a name'],
-        trim: true,
-        maxlength: [50, 'Name can not be more than 50 characters']
-    },
-    branchAddress: {
-      type: String,
-      required: [true, 'Please add an address']
-  },
-
-    branchlocation: {
-      // GeoJSON Point
-      type: {
-        type: String,
-        enum: ['Point']
-      },
-      coordinates: {
-        type: [Number],
-        index: '2dsphere'
-      },
-      formattedAddress: String,
-      street: String,
-      city: String,
-      state: String,
-      zipcode: String,
-      country: String
-    },
-    brancheEmail: {
-      type: String,
-      match: [
-        /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
-        'Please add a valid email'
-      ]
-    },
-    brancheTelephneNumber: {
-      type: String,
-      maxlength: [20, 'Phone number can not be longer than 20 characters']
-    },
-    createdAt: {
-      type: Date,
-      default: Date.now
-    }
-    }
-  ],
-    
       createdAt: {
         type: Date,
         default: Date.now
-      },
-} )
+  },
+      
+}, {
+    toJSON: { virtuals: true },
+  toObject:{virtuals:true}
+
+})
 
 
 
@@ -206,6 +156,57 @@ CompanySchema.pre( 'save', function ( next )
 this.slug=slugify(this.companyName,{lower:true})
   next()
   
+})
+//GEOCODE & CREATE LOCATION FIELD
+CompanySchema.pre('save', async function(next) {
+  const loc = await geocoder.geocode(this.companyAddress,this.saleAddress);
+  this.location = {
+    type: 'Point',
+    coordinates: [loc[0].longitude, loc[0].latitude],
+    formattedAddress: loc[0].formattedAddress,
+    street: loc[0].streetName,
+    city: loc[0].city,
+    state: loc[0].stateCode,
+    zipcode: loc[0].zipcode,
+    country: loc[0].countryCode
+  };
+ 
+  this.salelocation = {
+    type: 'Point',
+    coordinates: [loc[0].longitude, loc[0].latitude],
+    formattedAddress: loc[0].formattedAddress,
+    street: loc[0].streetName,
+    city: loc[0].city,
+    state: loc[0].stateCode,
+    zipcode: loc[0].zipcode,
+    country: loc[0].countryCode
+  };
+
+  // Do not save address in DB
+  this.companyAddress = undefined;
+  this.saleAddress = undefined
+  next();
+});
+
+//cascade delete branches when company is deleted
+CompanySchema.pre( 'remove', async function ( next )
+{
+  console.log(`Branches being removed from company name ${this.companyName} with that id ${this.id}`);
+  
+
+  await this.model('Branch').deleteMany({commpany:this._id})
+  next()
+
+} )
+
+
+
+//reverse branches virtual populaion inside company
+CompanySchema.virtual( 'branches', {
+  ref: 'Branch',
+  localField: '_id',
+  foreignField: 'company',
+  justOne:false
 })
 
 

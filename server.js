@@ -24,6 +24,7 @@ connectDB()
 //route files
 const companies=require('./routes/companies')
 
+const branches=require('./routes/branches')
 
 
 
@@ -45,6 +46,7 @@ if ( process.env.NODE_ENV === 'development' )
 
 //mount routers
 app.use( '/api/v1/companies', companies )
+app.use( '/api/v1/branches', branches )
 
 app.use(errorHandler);
 

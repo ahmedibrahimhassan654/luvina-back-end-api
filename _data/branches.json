@@ -1,0 +1,92 @@
+[
+	{
+		"_id": "5d725a4a7b292f5f8ceff789",
+		"branchName":"elazaby branche 7",
+		"branchManger":"ahmed ibrahim7",
+		"branchAddress":"42 elobour-city elqalubia egypt 11828",
+		"brancheEmail":"elazaby3@gmail.com",
+		"brancheTelephneNumber":"(002) 01065619208",
+		"company": "5d713995b721c3bb38c1f5d0",
+		"user": "5d7a514b5d2c12c7449be045"
+	},
+	{
+		"_id": "5d725c84c4ded7bcb480eaa0",
+		"branchName":"elazaby ",
+		"branchManger":"ahmed ibrahim",
+		"branchAddress":"422 mansoura-city Mansoura egypt 35511",
+		"brancheEmail":"elazaby3@gmail.com",
+		"brancheTelephneNumber":"(002) 01065619208",
+		"company": "5d713995b721c3bb38c1f5d0",
+		"user": "5d7a514b5d2c12c7449be045"
+	},
+	{
+		"_id": "5d725cb9c4ded7bcb480eaa1",
+		"branchName":"elazaby 21",
+		"branchManger":"ahmed ibrahim",
+		"branchAddress":"422 mansoura-city Mansoura egypt 35511",
+		"brancheEmail":"elazaby3@gmail.com",
+		"brancheTelephneNumber":"(002) 01065619208",
+		"company": "5d713a66ec8f2b88b8f830b8",
+		"user": "5d7a514b5d2c12c7449be046"
+	},
+	{
+		"_id": "5d725cd2c4ded7bcb480eaa2",
+		"branchName":"elazaby 21",
+		"branchManger":"ahmed ibrahim",
+		"branchAddress":"422 mansoura-city Mansoura egypt 35511",
+		"brancheEmail":"elazaby3@gmail.com",
+		"brancheTelephneNumber":"(002) 01065619208",
+		"company": "5d713a66ec8f2b88b8f830b8",
+		"user": "5d7a514b5d2c12c7449be046"
+	},
+	{
+		"_id": "5d725ce8c4ded7bcb480eaa3",
+		"branchName":"elazaby 21",
+		"branchManger":"ahmed ibrahim",
+		"branchAddress":"422 mansoura-city Mansoura egypt 35511",
+		"brancheEmail":"elazaby3@gmail.com",
+		"brancheTelephneNumber":"(002) 01065619208",
+		"company": "5d725a037b292f5f8ceff787",
+		"user": "5c8a1d5b0190b214360dc031"
+	},
+	{
+		"_id": "5d725cfec4ded7bcb480eaa4",
+		"branchName":"elazaby 21",
+		"branchManger":"ahmed ibrahim",
+		"branchAddress":"422 mansoura-city Mansoura egypt 35511",
+		"brancheEmail":"elazaby3@gmail.com",
+		"brancheTelephneNumber":"(002) 01065619208",
+		"company": "5d725a037b292f5f8ceff787",
+		"user": "5c8a1d5b0190b214360dc031"
+	},
+	{
+		"_id": "5d725cfec4ded7bcb480eaa5",
+		"branchName":"elazaby 21",
+		"branchManger":"ahmed ibrahim",
+		"branchAddress":"422 mansoura-city Mansoura egypt 35511",
+		"brancheEmail":"elazaby3@gmail.com",
+		"brancheTelephneNumber":"(002) 01065619208",
+		"company": "5d713a66ec8f2b88b8f830b8",
+		"user": "5c8a1d5b0190b214360dc032"
+	},
+	{
+		"_id": "5d725cfec4ded7bcb480eaa6",
+		"branchName":"elazaby 21",
+		"branchManger":"ahmed ibrahim",
+		"branchAddress":"422 mansoura-city Mansoura egypt 35511",
+		"brancheEmail":"elazaby3@gmail.com",
+		"brancheTelephneNumber":"(002) 01065619208",
+		"company": "5d713a66ec8f2b88b8f830b8",
+		"user": "5c8a1d5b0190b214360dc032"
+	},
+	{
+		"_id": "5d725cfec4ded7bcb480eaa7",
+		"branchName":"elazaby 21",
+		"branchManger":"ahmed ibrahim",
+		"branchAddress":"422 mansoura-city Mansoura egypt 35511",
+		"brancheEmail":"elazaby3@gmail.com",
+		"brancheTelephneNumber":"(002) 01065619208",
+		"company": "5d713995b721c3bb38c1f5d0",
+		"user": "5c8a1d5b0190b214360dc032"
+	}
+]

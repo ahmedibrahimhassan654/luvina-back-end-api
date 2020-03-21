@@ -5,12 +5,18 @@ const {
     updateCompany,
     getCompany,
     getCompanies,
-    addBranche,
-    deletBranch,
-    updateBranche
-
 } = require( '../controllers/companies' )
+
+//include other resource routes
+const branchRouter=require('./branches')
+
+ 
+
 const router = express.Router()
+
+//Re-route into other resource routers
+router.use( '/:companyId/branches', branchRouter )
+
 
 router
     .route( '/' )
@@ -23,7 +29,5 @@ router
     .put( updateCompany )
     .delete( deleteCompany )
     
-router.route( '/:id/branche' ).put( addBranche )
-router.route( '/:id/branche/:bran_id' ).delete( deletBranch )
-router.route('/:id/branche/:bran_id').put(updateBranche)
+
 module.exports=router
