@@ -1,2 +1,8 @@
 node_modules/
-config/config.env
+public
+.vscode/
+/dist
+/logs
+/npm-debug.log
+bitbucket-pipelines-test.yml
+bitbucket-pipelines.yml
