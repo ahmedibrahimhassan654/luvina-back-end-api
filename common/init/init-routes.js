@@ -4,6 +4,7 @@ const notFoundHandler = require('../middleware/notFoundHandler');
 const errorHandler = require('../middleware/errorHandler');
 // Route files
 const authRoutes = require('../../modules/auth/auth.routes');
+const companyRoutes=require('./../../modules/company/companies.routes')
 
 /**
  * @function
