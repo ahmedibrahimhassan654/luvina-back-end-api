@@ -1,12 +1,10 @@
 const {
   ROLE_CUSTOMER,
   ROLE_SUPER_ADMIN,
-  ROLE_ASSISTANT,
-  ROLE_DOCTOR
-} = require('../../../modules/user/roles');
+  ROLE_BUSINESS_ADMIN
+} = require('../../../modules/user/enum/roles');
 const superAdminPolicy = require('./superAdmin');
-const doctorPolicy = require('./doctor');
-const assistantPolicy = require('./assistant');
+const businessAdminPolicy = require('./businessAdmin');
 const customerPolicy = require('./customer');
 
 const opts = {
@@ -14,17 +12,13 @@ const opts = {
     // list of allowed operations
     can: superAdminPolicy
   },
-  [ROLE_DOCTOR]: {
+  [ROLE_BUSINESS_ADMIN]: {
     // list of allowed operations
-    can: doctorPolicy
+    can: businessAdminPolicy
   },
   [ROLE_CUSTOMER]: {
     // list of allowed operations
     can: customerPolicy
-  },
-  [ROLE_ASSISTANT]: {
-    // list of allowed operations
-    can: assistantPolicy
   }
 };
 
