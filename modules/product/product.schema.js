@@ -20,5 +20,18 @@ const ProductSchema = new Schema(
   }
 );
 
+ProductSchema.virtual('averageRating').get(function() {
+  let rating = 0;
+  if (this.reviews.length == 0) {
+    rating = 0;
+  } else {
+    this.reviews.map(review => {
+      rating += review.rating;
+    });
+    rating /= this.reviews.length;
+  }
+  return rating;
+});
+
 const Product = mongoose.model('Product', ProductSchema);
 module.exports = Product;
