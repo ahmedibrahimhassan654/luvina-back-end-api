@@ -1,9 +1,9 @@
 /* eslint-disable no-unused-vars */
 const { CREATED } = require('http-status-codes');
 
-const asyncHandler = require('../../../utils/common/middleware/async');
+const asyncHandler = require('../../../common/middleware/async');
 const User = require('../../user/user.schema');
-const { ROLE_CUSTOMER } = require('../../user/roles');
+const { ROLE_CUSTOMER } = require('../../user/enum/roles');
 
 // @desc      Register customer
 // @route     POST /api/v0/auth/register

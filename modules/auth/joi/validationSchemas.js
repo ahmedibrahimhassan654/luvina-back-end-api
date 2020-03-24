@@ -14,10 +14,13 @@ module.exports = {
           .regex(/^(\+2)?01([0-9]{9})$/)
           .required(),
         userName: Joi.string().required(),
-        email: Joi.string().optional(),
+        email: Joi.string()
+          .email()
+          .optional(),
         password: Joi.string()
           .required()
-          .min(6),
+          .min(6)
+          .max(12),
         photo: Joi.string().optional()
       })
   },

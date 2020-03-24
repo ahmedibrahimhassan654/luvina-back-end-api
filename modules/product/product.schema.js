@@ -22,7 +22,7 @@ const ProductSchema = new Schema(
 
 ProductSchema.virtual('averageRating').get(function() {
   let rating = 0;
-  if (this.reviews.length == 0) {
+  if (this.reviews.length === 0) {
     rating = 0;
   } else {
     this.reviews.map(review => {
