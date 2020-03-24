@@ -1,10 +1,9 @@
-const express = require( 'express' )
-const {
-   grtBranches
-} = require( '../controllers/branches' )
-const router = express.Router({mergeParams:true})
+const express = require('express');
 
-router.route( '/' ).get( grtBranches )
+const { grtBranches } = require('../controllers/branches');
+
+const router = express.Router();
+
+router.route('/').get(grtBranches);
 
 module.exports = router;
-

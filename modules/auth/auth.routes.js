@@ -1,8 +1,8 @@
 const express = require('express');
 
 const passport = require('passport');
-const requestValidator = require('../../utils/common/middleware/requestValidator');
-const isAuthorized = require('../../utils/common/middleware/isAuthorized');
+const requestValidator = require('../../common/middleware/requestValidator');
+const isAuthorized = require('../../common/middleware/isAuthorized');
 const {
   customerRegisterController,
   loginController,

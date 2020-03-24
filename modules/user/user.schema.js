@@ -5,7 +5,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
 const config = require('../../common/config/config');
-const roles = require('./roles');
+const roles = require('./enum/roles');
 
 const { Schema } = mongoose;
 

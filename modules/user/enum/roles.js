@@ -1,8 +1,7 @@
 const userRoles = Object.freeze({
-  ROLE_CUSTOMER: 'Customer',
-  ROLE_DOCTOR: 'Doctor',
   ROLE_SUPER_ADMIN: 'Super_Admin',
-  ROLE_ASSISTANT: 'Assistant'
+  ROLE_CUSTOMER: 'Customer',
+  ROLE_BUSINESS_ADMIN: 'Business_Admin'
 });
 
 module.exports = userRoles;

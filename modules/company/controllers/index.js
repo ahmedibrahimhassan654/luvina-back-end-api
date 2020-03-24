@@ -1,8 +1,8 @@
-const companiesController = require( './companies' );
-const emailConfirmationControler = require( './email-confirmation' ) 
-const emailVerificationControler = require( './email-verification' )
+const companiesController = require('./companies');
+const emailConfirmationController = require('./email-confirmation');
+const emailVerificationControler = require('./email-verification');
 
-const passwordForgetControler=require('./password-forget')  
+const passwordForgetControler = require('./password-forget');
 const loginController = require('./login');
 const successCallbackController = require('./success-callback');
 const verifyPhoneNumberController = require('./phone-verification');
@@ -14,20 +14,15 @@ const resetPasswordController = require('./password-reset');
 
 module.exports = {
   companiesController,
-  emailConfirmationControler,
+  emailConfirmationControler: emailConfirmationController,
   emailVerificationControler,
   verifyPhoneNumberController,
   confirmPhoneNumberController,
   verifyEmailController,
   confirmEmailController,
   forgetPasswordController,
-    resetPasswordController,
+  resetPasswordController,
   passwordForgetControler,
   loginController,
   successCallbackController
-  
 };
-
-
-
-
