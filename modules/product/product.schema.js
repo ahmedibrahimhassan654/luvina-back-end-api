@@ -10,10 +10,43 @@ const ProductSchema = new Schema(
     },
     businessId: { type: Schema.Types.ObjectId, ref: 'User' },
     reviews: [{ type: Schema.Types.ObjectId, ref: 'Review' }],
-    images: { type: String },
-    title: { type: String },
-    name: { type: String },
-    price: { type: Number }
+    image: { type: String },
+    gallery: [{ type: String }],
+    name: {
+      type: String,
+      required: true,
+      minlength: 8,
+      trim: true
+    },
+    price: {
+      type: Number,
+      required: true,
+      min: 0
+    },
+    description: {
+      type: String,
+      required: false,
+      trim: true
+    },
+    currency: {
+      type: String,
+      required: true,
+      enum: ['USD', 'EUR', 'EGP'],
+      default: 'EGP'
+    },
+    sale: {
+      type: Number,
+      required: false,
+      default: 0,
+      min: 0,
+      max: 100
+    },
+    stock: {
+      type: Number,
+      required: false,
+      default: 1,
+      min: 0
+    }
   },
   {
     timestamps: true

@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 
 const slugify = require('slugify');
-const geocoder = require('../../utils/geocoder');
 
 const CompanySchema = new mongoose.Schema(
   {
@@ -143,18 +142,6 @@ CompanySchema.pre('save', function(next) {
 });
 // GEOCODE & CREATE LOCATION FIELD
 CompanySchema.pre('save', async function(next) {
-  const loc = await geocoder.geocode(this.companyAddress, this.saleAddress);
-  this.location = {
-    type: 'Point',
-    coordinates: [loc[0].longitude, loc[0].latitude],
-    formattedAddress: loc[0].formattedAddress,
-    street: loc[0].streetName,
-    city: loc[0].city,
-    state: loc[0].stateCode,
-    zipcode: loc[0].zipcode,
-    country: loc[0].countryCode
-  };
-
   this.salelocation = {
     type: 'Point',
     coordinates: [loc[0].longitude, loc[0].latitude],
