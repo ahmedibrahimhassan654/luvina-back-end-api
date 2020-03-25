@@ -1,9 +1,7 @@
 const express = require('express');
 
-const { grtBranches } = require('../controllers/branches');
+const { grtBranches } = require('./controllers');
 
 const router = express.Router();
-
-router.route('/').get(grtBranches);
 
 module.exports = router;

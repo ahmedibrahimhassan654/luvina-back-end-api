@@ -1,6 +1,7 @@
-const ErrorResponse = require('../../../utils/errorRespnse');
-const asyncHandler = require('../middleware/async');
-const Company = require('../models/company');;
+const ErrorResponse = require('../../../common/utils/errorResponse');
+const asyncHandler = require('../../../common/middleware/async');
+const Company = require('../company.schema');
+
 // @desc  get all companies
 // @route GET /api/v1/companies
 // @route public
@@ -13,18 +14,18 @@ exports.getCompanies = asyncHandler(async (req, res, next) => {
     msg: 'get all companies',
     data: companies
   });
-});;
+});
 
 // @desc  get single company
 // @route GET /api/v1/companies/:id
 // @route public
 
 exports.getCompany = asyncHandler(async (req, res, next) => {
-  const company = await Company.findById(req.params.id);;
+  const company = await Company.findById(req.params.id);
 
   if (!company) {
     return next(
-      new ErrorResponse(`company with that id ${req.params.id} not found`, 404);
+      new ErrorResponse(`company with that id ${req.params.id} not found`, 404)
     );
   }
 
@@ -32,19 +33,19 @@ exports.getCompany = asyncHandler(async (req, res, next) => {
     sucess: true,
     data: company
   });
-});;
+});
 
 // @desc  creat company
 // @route post /api/v1/companies
 // @route private
 
 exports.creatCompany = asyncHandler(async (req, res, next) => {
-  const company = await Company.create(req.body);;
+  const company = await Company.create(req.body);
   res.status(201).json({
     sucess: true,
     data: company
   });
-});;
+});
 // @desc  update  company
 // @route put /api/v1/companies/:id
 // @route private
@@ -53,11 +54,11 @@ exports.updateCompany = asyncHandler(async (req, res, next) => {
   const company = await Company.findByIdAndUpdate(req.params.id, req.body, {
     new: true,
     runValidators: true
-  });;
+  });
 
   if (!company) {
     return next(
-      new ErrorResponse(`company with that id ${req.params.id} not found`, 404);
+      new ErrorResponse(`company with that id ${req.params.id} not found`, 404)
     );
   }
 
@@ -73,11 +74,11 @@ exports.updateCompany = asyncHandler(async (req, res, next) => {
 // @route private
 
 exports.deleteCompany = asyncHandler(async (req, res, next) => {
-  const company = await Company.findById(req.params.id);;
+  const company = await Company.findById(req.params.id);
 
   if (!company) {
     return next(
-      new ErrorResponse(`company with that id ${req.params.id} not found`, 404);
+      new ErrorResponse(`company with that id ${req.params.id} not found`, 404)
     );
   }
 
@@ -88,4 +89,4 @@ exports.deleteCompany = asyncHandler(async (req, res, next) => {
     msg: `caompany with ${req.params.id} deleted`,
     data: {}
   });
-});;
+});

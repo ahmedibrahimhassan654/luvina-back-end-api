@@ -47,7 +47,7 @@ module.exports = {
       'after',
       { overrides: { '?': 'ignore', ':': 'ignore' } }
     ],
-    'arrow-parens': ['error', 'as-needed'],
+    'arrow-parens': ['error', 'always'],
     'object-curly-newline': [
       'error',
       {
@@ -83,6 +83,8 @@ module.exports = {
       }
     ],
     'object-shorthand': 'error',
-    'func-name': 'off'
+    'func-name': 'off',
+    'array-callback-return': 'off',
+    'func-names': ['error', 'never']
   }
 };
