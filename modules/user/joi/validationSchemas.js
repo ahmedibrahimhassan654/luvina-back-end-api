@@ -13,12 +13,18 @@ module.exports = {
         phoneNumber: Joi.string()
           .regex(/^(\+2)?01([0-9]{9})$/)
           .required(),
-        userName: Joi.string().required(),
         email: Joi.string().optional(),
         password: Joi.string()
           .required()
           .min(6),
-        photo: Joi.string().optional()
+        dateOfBirth: Joi.date().optional(),
+        address: Joi.object()
+          .required()
+          .keys({
+            addressLine: Joi.string().optional(),
+            country: Joi.string().optional(),
+            province: Joi.string().optional()
+          })
       })
   },
   /**

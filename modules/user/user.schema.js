@@ -17,13 +17,6 @@ const UserSchema = new Schema(
       trim: true,
       maxlength: [150, 'Name should be less than 150 characters']
     },
-    userName: {
-      type: String,
-      index: true,
-      unique: true,
-      dropDups: true,
-      required: [true, 'Please add a user name']
-    },
     phoneNumber: {
       // required: [true, 'Please add a phone number'],
       type: String,
@@ -32,6 +25,16 @@ const UserSchema = new Schema(
       sparse: true,
       maxlength: [20, 'Phone number should be less than 20 characters']
       // match: [/^(\+2)?01([0-9]{9})$/, 'Please add a valid Phone number']
+    },
+    dateOfBirth: {
+      type: Date
+    },
+    address: {
+      type: {
+        addressLine: { type: String, trim: true },
+        country: { type: String, trim: true },
+        province: { type: String, trim: true }
+      }
     },
     phoneVerification: {
       type: {

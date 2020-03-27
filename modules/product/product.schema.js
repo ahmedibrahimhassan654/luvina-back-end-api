@@ -58,7 +58,7 @@ ProductSchema.virtual('averageRating').get(function() {
   if (this.reviews.length === 0) {
     rating = 0;
   } else {
-    this.reviews.map(review => {
+    this.reviews.map((review) => {
       rating += review.rating;
     });
     rating /= this.reviews.length;
