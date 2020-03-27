@@ -6,7 +6,7 @@ const User = require('../../user/user.schema');
 const { ROLE_CUSTOMER } = require('../../user/enum/roles');
 
 // @desc      Register customer
-// @route     POST /api/v0/auth/register
+// @route     POST /api/v0/auth/customer/signup
 // @access    Public
 module.exports = asyncHandler(async (req, res, next) => {
   const {
@@ -29,7 +29,9 @@ module.exports = asyncHandler(async (req, res, next) => {
     roles: [ROLE_CUSTOMER]
   });
 
-  return res
-    .status(CREATED)
-    .json({ status: true, message: 'User Created', data: null });
+  return res.status(CREATED).json({
+    status: true,
+    message: 'Customer Created successfully',
+    data: null
+  });
 });

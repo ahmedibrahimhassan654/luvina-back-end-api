@@ -16,7 +16,7 @@ const reviewRoutes = require('../../modules/review/review.routes');
  *
  * @param {object} app - Express app.
  */
-module.exports = app => {
+module.exports = (app) => {
   // Mount routers
   // eslint-disable-next-line no-unused-vars
   app.get(`${config.baseUrl}/health`, healthCheck);

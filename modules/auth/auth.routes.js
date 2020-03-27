@@ -4,7 +4,7 @@ const passport = require('passport');
 const requestValidator = require('../../common/middleware/requestValidator');
 const isAuthorized = require('../../common/middleware/isAuthorized');
 const {
-  customerRegisterController,
+  customerSignupController,
   loginController,
   successCallbackController,
   verifyPhoneNumberController,
@@ -15,7 +15,7 @@ const {
   resetPasswordController
 } = require('./controllers');
 const {
-  customerRegisterSchema,
+  customerSignupSchema,
   loginSchema,
   phoneVerificationSchema,
   phoneConfirmationSchema,
@@ -35,10 +35,11 @@ const {
 const router = express.Router();
 
 router.post(
-  '/register',
-  requestValidator(customerRegisterSchema),
-  customerRegisterController
+  '/customer/signup',
+  requestValidator(customerSignupSchema),
+  customerSignupController
 );
+
 router.post('/login', requestValidator(loginSchema), loginController);
 router.post(
   '/phone/:phoneNumber/verify',

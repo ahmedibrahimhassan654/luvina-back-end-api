@@ -3,9 +3,9 @@ const Joi = require('@hapi/joi');
 
 module.exports = {
   /**
-   * Customer register schema
+   * Customer signup schema
    */
-  customerRegisterSchema: {
+  customerSignupSchema: {
     body: Joi.object()
       .required()
       .keys({
@@ -13,15 +13,20 @@ module.exports = {
         phoneNumber: Joi.string()
           .regex(/^(\+2)?01([0-9]{9})$/)
           .required(),
-        userName: Joi.string().required(),
         email: Joi.string()
           .email()
           .optional(),
         password: Joi.string()
           .required()
-          .min(6)
-          .max(12),
-        photo: Joi.string().optional()
+          .min(6),
+        dateOfBirth: Joi.date().optional(),
+        address: Joi.object()
+          .required()
+          .keys({
+            addressLine: Joi.string().optional(),
+            country: Joi.string().optional(),
+            province: Joi.string().optional()
+          })
       })
   },
   /**
