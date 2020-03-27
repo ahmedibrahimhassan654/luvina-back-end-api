@@ -50,7 +50,8 @@ const BusinessSchema = new Schema(
     },
     businessAdmin: { type: Schema.Types.ObjectId, ref: 'User' },
     branches: { type: [{ type: Schema.Types.ObjectId, ref: 'Branch' }] },
-    managers: { type: [{ type: Schema.Types.ObjectId, ref: 'User' }] }
+    managers: { type: [{ type: Schema.Types.ObjectId, ref: 'User' }] },
+    isVerified: { type: Boolean, default: false }
   },
   {
     timestamps: true
