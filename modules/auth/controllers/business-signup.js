@@ -29,7 +29,7 @@ module.exports = asyncHandler(async (req, res, next) => {
 
   // Create business
   const newBusiness = new Business({
-    business
+    ...business
   });
 
   newAdmin.businessId = newBusiness._id;
