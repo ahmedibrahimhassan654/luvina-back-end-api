@@ -9,16 +9,23 @@ const { ROLE_CUSTOMER } = require('../../user/enum/roles');
 // @route     POST /api/v0/auth/register
 // @access    Public
 module.exports = asyncHandler(async (req, res, next) => {
-  const { fullName, phoneNumber, userName, email, password, photo } = req.body;
+  const {
+    fullName,
+    phoneNumber,
+    dateOfBirth,
+    email,
+    password,
+    address
+  } = req.body;
 
   // Create User
   const user = await User.create({
     fullName,
     phoneNumber,
-    userName,
     email,
     password,
-    photo,
+    dateOfBirth,
+    address,
     roles: [ROLE_CUSTOMER]
   });
 
