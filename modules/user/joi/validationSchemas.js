@@ -5,7 +5,7 @@ module.exports = {
   /**
    * Customer register schema
    */
-  customerRegisterSchema: {
+  customerSignupSchema: {
     body: Joi.object()
       .required()
       .keys({
@@ -13,7 +13,9 @@ module.exports = {
         phoneNumber: Joi.string()
           .regex(/^(\+2)?01([0-9]{9})$/)
           .required(),
-        email: Joi.string().optional(),
+        email: Joi.string()
+          .email()
+          .optional(),
         password: Joi.string()
           .required()
           .min(6),
