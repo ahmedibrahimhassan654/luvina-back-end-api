@@ -5,6 +5,7 @@ const requestValidator = require('../../common/middleware/requestValidator');
 const isAuthorized = require('../../common/middleware/isAuthorized');
 const {
   customerSignupController,
+  businessSignupController,
   loginController,
   successCallbackController,
   verifyPhoneNumberController,
@@ -16,6 +17,7 @@ const {
 } = require('./controllers');
 const {
   customerSignupSchema,
+  businessSignupSchema,
   loginSchema,
   phoneVerificationSchema,
   phoneConfirmationSchema,
@@ -38,6 +40,12 @@ router.post(
   '/customer/signup',
   requestValidator(customerSignupSchema),
   customerSignupController
+);
+
+router.post(
+  '/business/signup',
+  requestValidator(businessSignupSchema),
+  businessSignupController
 );
 
 router.post('/login', requestValidator(loginSchema), loginController);

@@ -13,7 +13,7 @@ const BusinessSchema = new Schema(
       unique: true,
       index: true,
       trim: true,
-      required: true
+      required: [true, 'Please add business name']
     },
     address: {
       type: {
