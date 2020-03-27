@@ -1,6 +1,10 @@
 /* eslint-disable no-useless-escape */
 const Joi = require('@hapi/joi');
 
+const businessType = require('../../business/enum/businessType');
+const deliveryType = require('../../business/enum/deliveryType');
+const salesType = require('../../business/enum/salesType');
+
 module.exports = {
   /**
    * Customer signup schema
@@ -29,6 +33,96 @@ module.exports = {
           })
       })
   },
+
+  /**
+   * Business signup schema
+   */
+  businessSignupSchema: {
+    body: Joi.object()
+      .required()
+      .keys({
+        businessAdmin: Joi.object()
+          .keys({
+            fullName: Joi.string().required(),
+            phoneNumber: Joi.string()
+              .regex(/^(\+2)?01([0-9]{9})$/)
+              .required(),
+            email: Joi.string()
+              .email()
+              .required(),
+            password: Joi.string()
+              .required()
+              .min(6)
+          })
+          .required(),
+        business: Joi.object()
+          .keys({
+            name: Joi.string().required(),
+            address: Joi.object()
+              .required()
+              .keys({
+                addressLine: Joi.string().optional(),
+                country: Joi.string().optional(),
+                province: Joi.string().optional()
+              }),
+            salesAddresses: Joi.array().items(
+              Joi.object()
+                .keys({
+                  addressLine: Joi.string().optional(),
+                  district: Joi.string().optional(),
+                  country: Joi.string().optional(),
+                  province: Joi.string().optional()
+                })
+                .required()
+                .min(1)
+            ),
+            businessType: Joi.array().items(
+              Joi.number()
+                .valid(...Object.values(businessType))
+                .required()
+                .min(1)
+            ),
+            deliveryType: Joi.array().items(
+              Joi.number()
+                .valid(...Object.values(deliveryType))
+                .required()
+                .min(1)
+            ),
+            saleType: Joi.number()
+              .valid(...Object.values(salesType))
+              .required()
+          })
+          .required(),
+        branches: Joi.array()
+          .items(
+            Joi.object().keys({
+              name: Joi.string().required(),
+              address: Joi.object()
+                .required()
+                .keys({
+                  addressLine: Joi.string().optional(),
+                  country: Joi.string().optional(),
+                  province: Joi.string().optional()
+                }),
+              manager: Joi.object().keys({
+                fullName: Joi.string().required(),
+                phoneNumber: Joi.string()
+                  .regex(/^(\+2)?01([0-9]{9})$/)
+                  .required(),
+                email: Joi.string()
+                  .email()
+                  .optional(),
+                password: Joi.string()
+                  .required()
+                  .min(6)
+              })
+            })
+          )
+          .required()
+          .min(1)
+      })
+  },
+
   /**
    * Login schema
    */
