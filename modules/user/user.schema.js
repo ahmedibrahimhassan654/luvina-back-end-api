@@ -36,6 +36,8 @@ const UserSchema = new Schema(
         province: { type: String, trim: true }
       }
     },
+    businessId: { type: Schema.Types.ObjectId, ref: 'Business' },
+    branchId: { type: Schema.Types.ObjectId, ref: 'Branch' },
     phoneVerification: {
       type: {
         token: { type: String },

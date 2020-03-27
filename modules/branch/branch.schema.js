@@ -1,75 +1,26 @@
 const mongoose = require('mongoose');
-const slugify = require('slugify');
+
+const { Schema } = mongoose;
 
 const BranchSchema = new mongoose.Schema({
-  branchName: {
+  name: {
     type: String,
-    // unique:true,
+    unique: true,
     required: [true, 'Please add a branch name'],
     trim: true,
     maxlength: [50, 'Name can not be more than 50 characters']
   },
-  slug: String,
-  branchManger: {
-    type: String,
-    // unique:true,
-    required: [true, 'Please add a name'],
-    trim: true,
-    maxlength: [50, 'Name can not be more than 50 characters']
-  },
-  branchAddress: {
-    type: String,
-    required: [true, 'Please add an branche address']
-  },
-
-  branchlocation: {
-    // GeoJSON Point
+  address: {
     type: {
-      type: String,
-      enum: ['Point']
+      addressLine: { type: String, trim: true },
+      district: { type: String, trim: true },
+      country: { type: String, trim: true },
+      province: { type: String, trim: true }
     },
-    coordinates: {
-      type: [Number],
-      index: '2dsphere'
-    },
-    formattedAddress: String,
-    street: String,
-    city: String,
-    state: String,
-    zipcode: String,
-    country: String
+    required: [true, 'Please add an branch address']
   },
-  branchEmail: {
-    type: String,
-    match: [
-      /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
-      'Please add a valid email'
-    ]
-  },
-  brancheTelephneNumber: {
-    type: String,
-    maxlength: [20, 'Phone number can not be longer than 20 characters']
-  },
-
-  createdAt: {
-    type: Date,
-    default: Date.now
-  },
-  company: {
-    type: mongoose.Schema.ObjectId,
-    ref: 'Company',
-    required: true
-  }
+  businessId: { type: Schema.Types.ObjectId, ref: 'Business' },
+  managerId: { type: Schema.Types.ObjectId, ref: 'User' }
 });
 
-BranchSchema.pre('save', function(next) {
-  this.slug = slugify(this.branchName, { lower: true });
-  next();
-});
-
-BranchSchema.pre('save', async function(next) {
-  this.branchAddress = undefined;
-
-  next();
-});
 module.exports = mongoose.model('Branch', BranchSchema);
