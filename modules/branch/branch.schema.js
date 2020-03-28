@@ -17,9 +17,9 @@ const BranchSchema = new mongoose.Schema({
       country: { type: String, trim: true },
       province: { type: String, trim: true }
     },
-    required: [true, 'Please add an branch address']
+    required: [true, 'Please add a branch address']
   },
-  businessId: { type: Schema.Types.ObjectId, ref: 'Business' },
+  businessId: { type: Schema.Types.ObjectId, ref: 'Business', required: true },
   managerId: { type: Schema.Types.ObjectId, ref: 'User' }
 });
 

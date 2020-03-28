@@ -9,6 +9,7 @@ const errorHandler = (err, req, res, next) => {
       err.stack
     )}`
   );
+
   return res.status(err.status || INTERNAL_SERVER_ERROR).json({
     success: false,
     message: err.message || 'Internal Server Error',
