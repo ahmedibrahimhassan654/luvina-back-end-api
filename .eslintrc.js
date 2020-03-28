@@ -85,6 +85,7 @@ module.exports = {
     'object-shorthand': 'error',
     'func-name': 'off',
     'array-callback-return': 'off',
-    'func-names': ['error', 'never']
+    'func-names': ['error', 'never'],
+    'no-underscore-dangle': 'off'
   }
 };
