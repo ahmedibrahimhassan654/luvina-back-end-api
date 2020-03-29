@@ -1,23 +1,18 @@
 const express = require('express');
 
-const  {grtBranches}  = require('./controllers/getAllBrabnches.js');
-const {getBranch}= require('./controllers/getSingleBranch')
-const {addBranch}=require('./controllers/addBranch')
-const { updateBranch } = require( './controllers/updateBranch' )
-const{deleteBranch}=require('./controllers/deleteBranch')
-const Branch = require( './branch.schema' )
-const advancedResults = require( '../../common/middleware/advancedResults' )
+const requestValidator = require('../../common/middleware/requestValidator');
+const isAuthorized = require('../../common/middleware/isAuthorized');
 
-const router = express.Router( { mergeParams: true } );
+const { addBranchController } = require('./controllers');
+const { addBranchSchema } = require('./joi/validationSchemas');
+const { BRANCH_ADD_BRANCH } = require('./endPoints');
 
-router.route( '/' )
-    .get(advancedResults(Branch), grtBranches )
-    .post( addBranch )
+const router = express.Router();
+router.post(
+  '/:businessId/branch',
+  isAuthorized(BRANCH_ADD_BRANCH),
+  requestValidator(addBranchSchema),
+  addBranchController
+);
 
-router.route( '/:id' )
-    .get( getBranch )
-    .put( updateBranch )
-    .delete(deleteBranch)
-
-    
 module.exports = router;

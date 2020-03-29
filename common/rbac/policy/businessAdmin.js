@@ -5,9 +5,12 @@ const {
   AUTH_PHONE_CONFIRMATION
 } = require('../../../modules/auth/endPoints');
 
+const { BRANCH_ADD_BRANCH } = require('../../../modules/branch/endPoints');
+
 module.exports = [
   AUTH_EMAIL_VERIFICATION,
   AUTH_EMAIL_CONFIRMATION,
   AUTH_PHONE_VERIFICATION,
-  AUTH_PHONE_CONFIRMATION
+  AUTH_PHONE_CONFIRMATION,
+  BRANCH_ADD_BRANCH
 ];
