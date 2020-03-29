@@ -11,7 +11,7 @@ const { ROLE_BRANCH_MANAGER } = require('../../user/enum/roles');
 
 exports.addBranch = asyncHandler(async (req, res, next) => {
   req.body.businessId = req.params.businessId;
-
+  req.body.managerId
   const business = await Business.findById(req.params.businessId);
   const branchManger = await Branch.find(req.body.managerId);
 
@@ -24,7 +24,7 @@ exports.addBranch = asyncHandler(async (req, res, next) => {
     );
   }
 
-  const branch = await Branch.create(req.body, branchManger);
+  const branch = await Branch.create(req.body);
 
   res.status(200).json({
     sucess: true,
