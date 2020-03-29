@@ -6,7 +6,9 @@ const Branch = require('../branch.schema');
 //@route GET /api/v1/branch/:id
 //@route public
 exports.getBranch = asyncHandler(async (req, res, next) => {
-  const branch = await Branch.findById(req.params.id);
+  const branch =  await Branch.findById( req.params.id ) .populate( {
+    path:'businessId'
+  } )
   if (!branch) {
     return next(
       new ErrorResponse(`no branch with the id of ${req.params.id}`),

@@ -3,26 +3,23 @@ const asyncHandler = require('../../../common/middleware/async');
 const Branch = require('../branch.schema');
 
 
-//@desc  upadte branch
-//@route put /api/v1/api/v1/branches/:id
+//@desc  delete branch
+//@route DELETE /api/v1/branches/:id
 //@route private
 
-exports.updateBranch = asyncHandler(async (req, res, next) => {
-    let branch = await Branch.findById(req.params.id);
+exports.deleteBranch = asyncHandler(async (req, res, next) => {
+    const branch = await Branch.findById(req.params.id);
     if (!branch) {
       return next(
         new ErrorResponse(`no branch with the id of ${req.params.id}`),
         404
       );
     }
-    branch = await Branch.findByIdAndUpdate( req.params.id, req.body, {
-        new: true,
-        runValidators:true
-    })
+    await Branch.remove()
   res.status( 200 ).json( {
-      message:'branch updated ',
+      message:'branch deleted ',
       sucess: true,
-      data: branch
+      data:{}
     });
   });
   
