@@ -1,12 +1,13 @@
-const grtBranches = require('./getAllBrabnches.js');
+const grtBranches = require('./getAllBranches.js');
 const getBranch = require('./getSingleBranch');
-const addBranch = require( './addBranch' )
-const updateBranch = require( './updateBranch' )
-const deleteBranch=require('./deleteBranch')
+const addBranchController = require('./addBranch');
+const updateBranch = require('./updateBranch');
+const deleteBranch = require('./deleteBranch');
+
 module.exports = {
-    grtBranches,
-    getBranch, 
-    addBranch,
-    updateBranch,
-    deleteBranch
+  grtBranches,
+  getBranch,
+  addBranchController,
+  updateBranch,
+  deleteBranch
 };

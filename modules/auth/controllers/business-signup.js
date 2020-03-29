@@ -44,6 +44,7 @@ module.exports = asyncHandler(async (req, res, next) => {
     const newManager = new User({
       ...manager,
       branchId: newBranch._id,
+      businessId: newBusiness._id,
       roles: [ROLE_BRANCH_MANAGER]
     });
     managersIds.push(newManager._id);
