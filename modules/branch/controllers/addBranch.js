@@ -29,7 +29,7 @@ const { ROLE_BRANCH_MANAGER } = require('../../user/enum/roles');
 //     })
 
 exports.addBranch = asyncHandler(async (req, res, next) => {
-  let { name, address, managerId, businessId } = req.body;
+  let { name, address, managerId } = req.body;
 
   // Create Business admin
   const newMang = new User({
@@ -42,6 +42,7 @@ exports.addBranch = asyncHandler(async (req, res, next) => {
   const newaddress = new Branch({
     ...address
   });
+  req.body.businessId = req.params.businessId;
 
   const business = await Business.findById(req.params.businessId);
 
@@ -52,7 +53,7 @@ exports.addBranch = asyncHandler(async (req, res, next) => {
     );
   }
 
-  const branch = await Branch.create(newName, newaddress, newMang);
+  const branch = await Branch.create(req.body);
 
   res.status(200).json({
     sucess: true,
