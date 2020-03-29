@@ -3,8 +3,10 @@ const express = require('express');
 const  {grtBranches}  = require('./controllers/getAllBrabnches.js');
 const {getBranch}= require('./controllers/getSingleBranch')
 const {addBranch}=require('./controllers/addBranch')
-const Branch= require('./branch.schema')
-const advancedResults=require('../../common/middleware/advancedResults')
+const{updateBranch}=require('./controllers/updateBranch')
+const Branch = require( './branch.schema' )
+const advancedResults = require( '../../common/middleware/advancedResults' )
+
 const router = express.Router( { mergeParams: true } );
 
 router.route( '/' )
@@ -13,5 +15,7 @@ router.route( '/' )
 
 router.route( '/:id' )
     .get( getBranch )
+    .put(updateBranch)
+
     
 module.exports = router;
