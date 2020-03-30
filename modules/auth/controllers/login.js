@@ -8,10 +8,10 @@ const ErrorResponse = require('../../../common/utils/errorResponse');
 // @route     POST /api/v0/auth/login
 // @access    Public
 module.exports = asyncHandler(async (req, res, next) => {
-  const { userName, password } = req.body;
+  const { phoneNumber, password } = req.body;
 
   // Create User
-  const user = await User.findOne({ userName }).select('+password');
+  const user = await User.findOne({ phoneNumber }).select('+password');
   if (!user) {
     return next(new ErrorResponse('Login failed', UNAUTHORIZED));
   }

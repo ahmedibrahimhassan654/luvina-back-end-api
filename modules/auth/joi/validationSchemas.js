@@ -130,7 +130,7 @@ module.exports = {
     body: Joi.object()
       .required()
       .keys({
-        userName: Joi.string().required(),
+        phoneNumber: Joi.string().required(),
         password: Joi.string().required()
       })
   },
