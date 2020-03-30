@@ -9,7 +9,7 @@
   "scripts": {
     "lint": "eslint . --ext .js --fix",
     "start": "NODE_ENV=production node app",
-    "dev": "NODE_ENV=development nodemon app"
+    "dev": "NODE_ENV=development & nodemon app"
   },
   "author": "ahmed ibrahim",
   "license": "ISC",

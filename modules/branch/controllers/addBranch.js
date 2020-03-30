@@ -15,7 +15,9 @@ const { ROLE_BRANCH_MANAGER } = require('../../user/enum/roles');
 // @route POST /api/v1/branches/:businessId/branch
 // @route Public
 
-module.exports = asyncHandler(async (req, res, next) => {
+module.exports = asyncHandler( async ( req, res, next ) =>
+{
+  
   const { name, address, manager } = req.body;
   const { fullName, phoneNumber, email, password } = manager;
   const { businessId } = req.params;
