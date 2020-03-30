@@ -3,11 +3,29 @@ const express = require('express');
 const requestValidator = require('../../common/middleware/requestValidator');
 const isAuthorized = require('../../common/middleware/isAuthorized');
 
-const { addBranchController,updateBranch ,deleteBranch} = require('./controllers');
-const { addBranchSchema ,updateBranchSchema,deleteBranchSchema} = require('./joi/validationSchemas');
-const { BRANCH_ADD_BRANCH ,BRANCH_UPDATE_BRANCH,BRANCH_DELETE_BRANCH} = require('./endPoints');
+const {
+  addBranchController,
+  updateBranchController,
+  activateBranchController,
+  businessBranchesController,
+  businessBranchController
+} = require('./controllers');
+const {
+  addBranchSchema,
+  updateBranchSchema,
+  activateBranchSchema,
+  businessBranchSchema
+} = require('./joi/validationSchemas');
+const {
+  BRANCH_ADD_BRANCH,
+  BRANCH_UPDATE_BRANCH,
+  BRANCH_ACTIVATE_BRANCH,
+  BRANCH_BUSINESS_BRANCHES,
+  BRANCH_BUSINESS_BRANCH
+} = require('./endPoints');
 
 const router = express.Router();
+
 router.post(
   '/:businessId/branch',
   isAuthorized(BRANCH_ADD_BRANCH),
@@ -15,19 +33,30 @@ router.post(
   addBranchController
 );
 router.put(
-    '/:id',
-    isAuthorized(BRANCH_UPDATE_BRANCH),
-    requestValidator(updateBranchSchema),
-    updateBranch
-  );
+  '/:businessId/:branchId',
+  isAuthorized(BRANCH_UPDATE_BRANCH),
+  requestValidator(updateBranchSchema),
+  updateBranchController
+);
 
-  router.delete(
-    '/:id',
-    isAuthorized(BRANCH_DELETE_BRANCH),
-    requestValidator(deleteBranchSchema),
-    deleteBranch
-  );
-  
+router.put(
+  '/activate/:branchId',
+  isAuthorized(BRANCH_ACTIVATE_BRANCH),
+  requestValidator(activateBranchSchema),
+  activateBranchController
+);
 
-    
+router.get(
+  '/business',
+  isAuthorized(BRANCH_BUSINESS_BRANCHES),
+  businessBranchesController
+);
+
+router.get(
+  '/business/:branchId',
+  isAuthorized(BRANCH_BUSINESS_BRANCH),
+  requestValidator(businessBranchSchema),
+  businessBranchesController
+);
+
 module.exports = router;

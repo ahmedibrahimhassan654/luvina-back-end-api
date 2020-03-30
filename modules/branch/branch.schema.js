@@ -21,11 +21,10 @@ const BranchSchema = new mongoose.Schema({
   },
   businessId: { type: Schema.Types.ObjectId, ref: 'Business', required: true },
   managerId: { type: Schema.Types.ObjectId, ref: 'User' },
-  active: {
+  isActive: {
     type: Boolean,
-    default: true,
-    select:false
-}
-} );
+    default: true
+  }
+});
 
 module.exports = mongoose.model('Branch', BranchSchema);

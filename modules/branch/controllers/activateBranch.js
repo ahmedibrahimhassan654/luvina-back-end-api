@@ -1,36 +1,28 @@
-const { OK, BAD_REQUEST, UNAUTHORIZED } = require('http-status-codes');
+const { OK, BAD_REQUEST } = require('http-status-codes');
 
 const ErrorResponse = require('../../../common/utils/errorResponse');
 const asyncHandler = require('../../../common/middleware/async');
 const Branch = require('../branch.schema');
 const Business = require('../../business/business.schema');
 
-// @desc  Update branch
-// @route put /api/v0/branches/:businessId/:branchId
+// @desc  Activate branch
+// @route put /api/v0/branches/activate/:branchId
 // @route public
 module.exports = asyncHandler(async (req, res, next) => {
-  const { branchId, businessId } = req.params;
-  const { name, address, managerId } = req.body;
-  const business = await Business.findOne({
-    _id: businessId,
-    businessAdmin: req.user._id
-  }).lean();
+  const { branchId } = req.params;
+  const { isActive } = req.body;
 
-  if (!business) {
-    return next(
-      new ErrorResponse(
-        'User is not authorized to perform this action',
-        UNAUTHORIZED
-      )
-    );
-  }
+  const business = await Business.findOne({
+    businessAdmin: req.user._id
+  })
+    .select('_id')
+    .lean();
+
   const branch = await Branch.findOneAndUpdate(
-    { _id: branchId, businessId },
+    { _id: branchId, businessId: business._id },
     {
       $set: {
-        name,
-        address,
-        managerId
+        isActive
       }
     },
     { new: true, runValidators: true }
