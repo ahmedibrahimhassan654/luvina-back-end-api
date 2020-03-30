@@ -9,6 +9,6 @@ const {} = require('./endPoints');
 
 const router = express.Router();
 
-router.get('/', healthyCheck);
+router.get('/healthy', healthyCheck);
 
 module.exports = router;

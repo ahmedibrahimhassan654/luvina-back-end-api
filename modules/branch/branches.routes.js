@@ -56,7 +56,7 @@ router.get(
   '/business/:branchId',
   isAuthorized(BRANCH_BUSINESS_BRANCH),
   requestValidator(businessBranchSchema),
-  businessBranchesController
+  businessBranchController
 );
 
 module.exports = router;

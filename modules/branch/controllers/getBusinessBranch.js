@@ -20,7 +20,7 @@ module.exports = asyncHandler(async (req, res, next) => {
     return next(new ErrorResponse('No Business found', BAD_REQUEST));
   }
 
-  const branch = await Branch.find({
+  const branch = await Branch.findOne({
     _id: branchId,
     businessId: business._id
   }).lean();
