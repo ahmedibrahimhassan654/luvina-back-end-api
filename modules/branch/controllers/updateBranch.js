@@ -41,18 +41,26 @@ module.exports = asyncHandler( async ( req, res, next ) =>
   
 
   try {
-    let branch = await Branch.findById(req.params.id);
+    // let branch = await Branch.findById(req.params.id);
+    // if (!business) {
+    //   throw new ErrorResponse('Business Not found', BAD_REQUEST);
+    // }
+    // branch = await Branch.findByIdAndUpdate( req.params.id, {businessAdmin: req.user._id},req.body, {
+    //     new: true,
+    //     runValidators:true
+    // })
+    const branch = await Branch.findOneAndUpdate(
+      {
+        _id: branchId,
+        businessAdmin: req.user._id
+      },
+      {
+        $addToSet: { branches: branchId }
+      }
+    );
     if (!branch) {
-      return next(
-        new ErrorResponse(`no branch with the id of ${req.params.id}`),
-        404
-      );
+      throw new ErrorResponse('Branch Not found', BAD_REQUEST);
     }
-    branch = await Branch.findByIdAndUpdate( req.params.id, req.body, {
-        new: true,
-        runValidators:true
-    })
-
     return res.status(CREATED).json({
       status: true,
       message: 'branch updated successfully',

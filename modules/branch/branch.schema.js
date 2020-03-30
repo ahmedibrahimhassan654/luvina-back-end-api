@@ -20,7 +20,12 @@ const BranchSchema = new mongoose.Schema({
     required: [true, 'Please add a branch address']
   },
   businessId: { type: Schema.Types.ObjectId, ref: 'Business', required: true },
-  managerId: { type: Schema.Types.ObjectId, ref: 'User' }
-});
+  managerId: { type: Schema.Types.ObjectId, ref: 'User' },
+  active: {
+    type: Boolean,
+    default: true,
+    select:false
+}
+} );
 
 module.exports = mongoose.model('Branch', BranchSchema);
