@@ -5,7 +5,6 @@ const errorHandler = require('../middleware/errorHandler');
 // Route files
 const authRoutes = require('../../modules/auth/auth.routes');
 const businessRoute = require('../../modules/business/business.routes');
-
 const cartRoutes = require('../../modules/cart/cart.routes');
 const productRoutes = require('../../modules/product/product.routes');
 const orderRoutes = require('../../modules/order/order.routes');
