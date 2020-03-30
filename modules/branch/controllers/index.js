@@ -1,13 +1,13 @@
-const grtBranches = require('./getAllBranches.js');
-const getBranch = require('./getSingleBranch');
 const addBranchController = require('./addBranch');
-const updateBranch = require('./updateBranch');
-const deleteBranch = require('./deleteBranch');
+const updateBranchController = require('./updateBranch');
+const activateBranchController = require('./activateBranch');
+const businessBranchesController = require('./getBusinessBranches');
+const businessBranchController = require('./getBusinessBranch');
 
 module.exports = {
-  grtBranches,
-  getBranch,
   addBranchController,
-  updateBranch,
-  deleteBranch
+  updateBranchController,
+  activateBranchController,
+  businessBranchesController,
+  businessBranchController
 };
