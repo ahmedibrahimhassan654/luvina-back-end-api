@@ -9,6 +9,7 @@ const ProductSchema = new Schema(
       ref: 'Category'
     },
     businessId: { type: Schema.Types.ObjectId, ref: 'User' },
+    branchId:{type:Schema.Types.ObjectId,ref:'Branch'},
     reviews: [{ type: Schema.Types.ObjectId, ref: 'Review' }],
     image: { type: String },
     gallery: [{ type: String }],
