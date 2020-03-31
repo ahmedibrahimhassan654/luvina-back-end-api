@@ -9,25 +9,25 @@ const {
  
   const Business = require('../../business/business.schema');
  const Product=require('../product.schema')
-  
+ 
   const { ROLE_BRANCH_MANAGER } = require('../../user/enum/roles');
   
   // @desc  Add product
-  // @route POST /api/v0/businesses/:businessId/product
+  // @route POST /api/v0/branches/:branchId/product
   // @route Public
   
   module.exports = asyncHandler(async (req, res, next) => {
-    const { categoryId, reviews, image, gallery, name, price, description, currency, sale, stock } = req.body;
+    const { categoryId,image, gallery, name, price, description, currency, sale, stock } = req.body;
    
 
-    const { businessId } = req.params;
+    const { branchId } = req.params;
   
     let productId = null;
     
     try {
-      const newProduct = new Product({ name, categoryId, reviews,image,gallery,price,description,currency,sale,stock,businessId });
+      const newProduct = new Product({ branchId,name, categoryId,image,gallery,price,description,currency,sale,stock});
       productId = newProduct._id;
-      newProduct.businessId=businessId
+      newProduct.branchId=branchId
     
     
   

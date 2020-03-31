@@ -12,9 +12,9 @@ const router = express.Router();
 router.get('/healthy', healthyCheck);
 
 router.post(
-  '/:businessId/product',
-  //isAuthorized(PRODUCT_ADD_PRODUCT),
-   //requestValidator(addProductSchema),
+  '/:branchId/product',
+  isAuthorized(PRODUCT_ADD_PRODUCT),
+  requestValidator(addProductSchema),
   addProductController
 );
 
