@@ -4,7 +4,7 @@ const { Schema } = mongoose;
 
 const CategorySchema = new Schema(
   {
-    name: { type: String, unique: true, trim: true, required: true },
+    catName: { type: String, unique: true, trim: true, required: true },
     description: { type: String, trim: true, lowercase: true }
   },
   {

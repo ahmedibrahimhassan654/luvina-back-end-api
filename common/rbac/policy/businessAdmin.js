@@ -11,6 +11,9 @@ const {
   BRANCH_ACTIVATE_BRANCH,
   BRANCH_BUSINESS_BRANCH
 } = require('../../../modules/branch/endPoints');
+const { 
+PRODUCT_ADD_PRODUCT
+}=require('../../../modules/product/endPoints')
 
 module.exports = [
   AUTH_EMAIL_VERIFICATION,
@@ -20,5 +23,6 @@ module.exports = [
   BRANCH_ADD_BRANCH,
   BRANCH_UPDATE_BRANCH,
   BRANCH_ACTIVATE_BRANCH,
-  BRANCH_BUSINESS_BRANCH
+  BRANCH_BUSINESS_BRANCH,
+  PRODUCT_ADD_PRODUCT
 ];
