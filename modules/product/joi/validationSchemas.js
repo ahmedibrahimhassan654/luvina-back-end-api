@@ -11,19 +11,16 @@ module.exports = {
       branchId: Joi.string().required()
     }),
     body: Joi.object().keys({
-      categoryId: Joi.object().keys({
-        name: Joi.string().required(),
-        description: Joi.string().required()
-      }),
+      categoryId: Joi.string().required(),
       
       image: Joi.string().required(),
       gallery: Joi.array().items(Joi.string()),
       name: Joi.string().required(),
       price: Joi.number().required(),
       description: Joi.string().required(),
-      currency: Joi.number()
+      currency: Joi.string()
         .valid(...Object.values(currency))
-        .required(),
+        .optional(),
 
       sale: Joi.number()
         .optional()
