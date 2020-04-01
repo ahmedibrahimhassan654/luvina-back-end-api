@@ -67,13 +67,14 @@ module.exports = asyncHandler(async (req, res, next) => {
       req.user._id,
       { Product: productId }
     );
-    console.log(branch);
+    
 
     if (!branch) {
       throw new ErrorResponse('branch Not found', BAD_REQUEST);
     }
 
-    return res.status(CREATED).json({
+    return res.status( CREATED ).json( {
+      number:productId.length,
       status: true,
       message: 'product Created successfully',
       data: null
