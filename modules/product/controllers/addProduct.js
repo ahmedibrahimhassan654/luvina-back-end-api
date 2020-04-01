@@ -7,7 +7,8 @@ const {
   const ErrorResponse = require('../../../common/utils/errorResponse');
   const asyncHandler = require('../../../common/middleware/async');
  
-  const Business = require('../../business/business.schema');
+const Business = require( '../../business/business.schema' );
+const Branch = require('../../branch/branch.schema');
  const Product=require('../product.schema')
  
   const { ROLE_BRANCH_MANAGER } = require('../../user/enum/roles');
@@ -33,17 +34,17 @@ const {
   
       await newProduct.save();
   
-      const business = await Business.findOneAndUpdate(
+      const branch = await Branch.findOneAndUpdate(
         {
-          _id: businessId,
+          _id: branchId,
           businessAdmin: req.user._id
         },
         {
           $addToSet: { products: productId }
         }
       );
-      if (!business) {
-        throw new ErrorResponse('Business Not found', BAD_REQUEST);
+      if (!branch) {
+        throw new ErrorResponse('branch Not found', BAD_REQUEST);
       }
   
       return res.status(CREATED).json({
