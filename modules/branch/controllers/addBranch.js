@@ -55,7 +55,7 @@ module.exports = asyncHandler(async (req, res, next) => {
 
     return res.status(CREATED).json({
       status: true,
-      message: 'Customer Created successfully',
+      message: 'branch Created successfully',
       data: null
     });
   } catch (err) {

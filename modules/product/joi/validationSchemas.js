@@ -39,7 +39,7 @@ module.exports = {
     }),
     body: Joi.object().keys({
       categoryId: Joi.string().optional(),
-      
+      businessId:Joi.string().required(),
       image: Joi.string().optional(),
       gallery: Joi.array().items(Joi.string()),
       name: Joi.string().optional(),
@@ -56,6 +56,17 @@ module.exports = {
       stock: Joi.number()
         .optional()
         .min(0)
+    })
+  },
+    /**
+   * Activate product schema
+   */
+  activateProductSchema: {
+    params: Joi.object().keys({
+      productId: Joi.string().required()
+    }),
+    body: Joi.object().keys({
+      isActive: Joi.boolean().required()
     })
   },
 };
