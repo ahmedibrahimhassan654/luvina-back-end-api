@@ -11,14 +11,12 @@ const Business = require('../../business/business.schema');
 const Branch = require('../../branch/branch.schema');
 const Product = require('../product.schema');
 
-const { ROLE_BRANCH_MANAGER } = require('../../user/enum/roles');
-
 // @desc  Add product
 // @route POST /api/v0/branches/:branchId/product
-// @route Public
+// @route Private
 
 module.exports = asyncHandler(async (req, res, next) => {
-  const {
+  let {
     categoryId,
     image,
     gallery,
@@ -27,16 +25,17 @@ module.exports = asyncHandler(async (req, res, next) => {
     description,
     currency,
     sale,
-    stock
+    stock,
+    businessId
   } = req.body;
 
   const { branchId } = req.params;
-
+   businessId  = req.body.businessId;
   let productId = null;
 
   try {
     const newProduct = new Product({
-      branchId,
+     
       name,
       categoryId,
       image,
@@ -45,7 +44,8 @@ module.exports = asyncHandler(async (req, res, next) => {
       description,
       currency,
       sale,
-      stock
+      stock,
+      businessId
     });
     productId = newProduct._id;
     newProduct.branchId = branchId;
@@ -67,14 +67,12 @@ module.exports = asyncHandler(async (req, res, next) => {
       req.user._id,
       { Product: productId }
     );
-    
 
     if (!branch) {
       throw new ErrorResponse('branch Not found', BAD_REQUEST);
     }
 
-    return res.status( CREATED ).json( {
-      number:productId.length,
+    return res.status(CREATED).json({
       status: true,
       message: 'product Created successfully',
       data: null

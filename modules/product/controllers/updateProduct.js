@@ -38,8 +38,8 @@ module.exports = asyncHandler(async (req, res, next) => {
   const product = await Product.findOneAndUpdate(
     { _id: productId },
     {
-      $set: {
-      product:req.body
+      $set: {  
+        product:req.body
       }
     },
     { new: true, runValidators: true }

@@ -8,7 +8,7 @@ const ProductSchema = new Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Category'
     },
-    businessId: { type: Schema.Types.ObjectId, ref: 'User' },
+    businessId:{type: Schema.Types.ObjectId, ref: 'Business'},
     branchId: { type: Schema.Types.ObjectId, ref: 'Branch' },
     reviews: [{ type: Schema.Types.ObjectId, ref: 'Review' }],
     image: { type: String },
@@ -47,6 +47,10 @@ const ProductSchema = new Schema(
       required: false,
       default: 1,
       min: 0
+    },
+    isActive: {
+      type: Boolean,
+      default: true
     }
   },
   {
