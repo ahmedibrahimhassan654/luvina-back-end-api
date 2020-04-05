@@ -24,20 +24,15 @@ const development = {
     clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     callbackURL: process.env.GOOGLE_CALL_BACK_URL
   },
-  smsMisr: {
-    api: process.env.SMS_MISR_API,
-    userName: process.env.SMS_MISR_USERNAME,
-    password: process.env.SMS_MISR_PASSWORD,
-    sender: process.env.SMS_MISR_SENDER_ID,
-    arabic: process.env.SMS_MISR_ARABIC_LANGUAGE,
-    english: process.env.SMS_MISR_ENGLISH_LANGUAGE,
-    unicode: process.env.SMS_MISR_UNICODE,
-    mobile: process.env.SMS_MISR_MOBILE
+  twilio: {
+    accountSID: process.env.TWILIO_ACCOUNT_SID,
+    authToken: process.env.TWILIO_AUTH_TOKEN,
+    phoneNumber: process.env.TWILIO_PHONE_NUMBER
   },
-  manDrill: {
-    apiKey: process.env.MAN_DRILL_API_KEY,
-    fromName: process.env.MAN_DRILL_FROM_NAME,
-    fromMail: process.env.MAN_DRILL_FROM_EMAIL
+  sendGrid: {
+    apiKey: process.env.SENDGRID_API_KEY,
+    fromName: process.env.SENDGRID_FROM_NAME,
+    fromMail: process.env.SENDGRID_FROM_EMAIL
   },
   baseUrl: process.env.BASE_API_URL,
   salt: process.env.BCRYPT_SALT_ROUNDS
@@ -68,20 +63,15 @@ const test = {
     clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     callbackURL: process.env.GOOGLE_CALL_BACK_URL
   },
-  smsMisr: {
-    api: process.env.SMS_MISR_API,
-    userName: process.env.SMS_MISR_USERNAME,
-    password: process.env.SMS_MISR_PASSWORD,
-    sender: process.env.SMS_MISR_SENDER_ID,
-    arabic: process.env.SMS_MISR_ARABIC_LANGUAGE,
-    english: process.env.SMS_MISR_ENGLISH_LANGUAGE,
-    unicode: process.env.SMS_MISR_UNICODE,
-    mobile: process.env.SMS_MISR_MOBILE
+  twilio: {
+    accountSID: process.env.TWILIO_ACCOUNT_SID,
+    authToken: process.env.TWILIO_AUTH_TOKEN,
+    phoneNumber: process.env.TWILIO_PHONE_NUMBER
   },
-  manDrill: {
-    apiKey: process.env.MAN_DRILL_API_KEY,
-    fromName: process.env.MAN_DRILL_FROM_NAME,
-    fromMail: process.env.MAN_DRILL_FROM_EMAIL
+  sendGrid: {
+    apiKey: process.env.SENDGRID_API_KEY,
+    fromName: process.env.SENDGRID_FROM_NAME,
+    fromMail: process.env.SENDGRID_FROM_EMAIL
   },
   baseUrl: process.env.BASE_API_URL,
   salt: process.env.BCRYPT_SALT_ROUNDS
@@ -113,20 +103,15 @@ const production = {
     clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     callbackURL: process.env.GOOGLE_CALL_BACK_URL
   },
-  smsMisr: {
-    api: process.env.SMS_MISR_API,
-    userName: process.env.SMS_MISR_USERNAME,
-    password: process.env.SMS_MISR_PASSWORD,
-    sender: process.env.SMS_MISR_SENDER_ID,
-    arabic: process.env.SMS_MISR_ARABIC_LANGUAGE,
-    english: process.env.SMS_MISR_ENGLISH_LANGUAGE,
-    unicode: process.env.SMS_MISR_UNICODE,
-    mobile: process.env.SMS_MISR_MOBILE
+  twilio: {
+    accountSID: process.env.TWILIO_ACCOUNT_SID,
+    authToken: process.env.TWILIO_AUTH_TOKEN,
+    phoneNumber: process.env.TWILIO_PHONE_NUMBER
   },
-  manDrill: {
-    apiKey: process.env.MAN_DRILL_API_KEY,
-    fromName: process.env.MAN_DRILL_FROM_NAME,
-    fromMail: process.env.MAN_DRILL_FROM_EMAIL
+  sendGrid: {
+    apiKey: process.env.SENDGRID_API_KEY,
+    fromName: process.env.SENDGRID_FROM_NAME,
+    fromMail: process.env.SENDGRID_FROM_EMAIL
   },
   baseUrl: process.env.BASE_API_URL,
   salt: process.env.BCRYPT_SALT_ROUNDS

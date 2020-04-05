@@ -1,10 +1,11 @@
 const healthyCheck = require('./healthy');
-const addProductController = require( './addProduct' );
+const addProductController = require('./addProduct');
 const updateProductController = require('./updateProduct');
-const isActivateProductControler=require('./actvateProduct')
+const activateProductController = require('./activateProduct');
+
 module.exports = {
   healthyCheck,
   addProductController,
   updateProductController,
-  isActivateProductControler
+  activateProductController
 };
