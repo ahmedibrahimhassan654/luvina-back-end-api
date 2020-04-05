@@ -1,18 +1,18 @@
-const { OK, BAD_REQUEST, UNAUTHORIZED } = require('http-status-codes');
+const { OK, BAD_REQUEST } = require('http-status-codes');
 
 const ErrorResponse = require('../../../common/utils/errorResponse');
 const asyncHandler = require('../../../common/middleware/async');
-const Branch = require('../../branch/branch.schema');
 const Product = require('../product.schema');
 
 // @desc  Update product
 
-// @route put /api/v0/products/:productId
+// @route put /api/v0/products/business/:productId
 // @route public
 module.exports = asyncHandler(async (req, res, next) => {
-  const {  productId } = req.params;
+  const { productId } = req.params;
   const {
     categoryId,
+    branchId,
     image,
     gallery,
     name,
@@ -20,26 +20,29 @@ module.exports = asyncHandler(async (req, res, next) => {
     description,
     currency,
     sale,
-    stock
+    isSaleActive,
+    stock,
+    isActive
   } = req.body;
-//   const branch = await Branch.findOne({
-//     _id: branchId,
-//     businessAdmin: req.user._id
-//   }).lean();
+  const { _id, businessId } = req.user;
 
-//   if (!branch) {
-//     return next(
-//       new ErrorResponse(
-//         'User is not authorized to perform this action',
-//         UNAUTHORIZED
-//       )
-//     );
-//   }
   const product = await Product.findOneAndUpdate(
-    { _id: productId },
+    { _id: productId, businessId },
     {
-      $set: {  
-        product:req.body
+      $set: {
+        categoryId,
+        branchId,
+        image,
+        gallery,
+        name,
+        price,
+        description,
+        currency,
+        sale,
+        isSaleActive,
+        stock,
+        isActive,
+        updatedBy: _id
       }
     },
     { new: true, runValidators: true }
@@ -52,7 +55,6 @@ module.exports = asyncHandler(async (req, res, next) => {
   }
 
   return res.status(OK).json({
-    
     status: true,
     message: 'Product Updated successfully',
     data: null

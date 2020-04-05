@@ -9,12 +9,13 @@
   "scripts": {
     "lint": "eslint . --ext .js --fix",
     "start": "NODE_ENV=production node app",
-    "dev": "NODE_ENV=development & nodemon app"
+    "dev": "NODE_ENV=development nodemon app"
   },
   "author": "ahmed ibrahim",
   "license": "ISC",
   "dependencies": {
     "@hapi/joi": "^17.1.1",
+    "@sendgrid/mail": "^7.0.0",
     "await-to-js": "^2.1.1",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
@@ -33,6 +34,8 @@
     "jsonwebtoken": "^8.5.1",
     "moment": "^2.24.0",
     "mongoose": "^5.9.5",
+    "mongoose-autopopulate": "^0.12.1",
+    "mongoose-unique-validator": "^2.0.3",
     "morgan": "^1.10.0",
     "node-geocoder": "^3.25.1",
     "node-mandrill": "^1.0.1",
@@ -46,6 +49,7 @@
     "request-promise": "^4.2.5",
     "slugify": "^1.4.0",
     "swagger-ui-express": "^4.1.4",
+    "twilio": "^3.42.0",
     "xss-clean": "^0.1.1"
   },
   "devDependencies": {
