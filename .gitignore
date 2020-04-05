@@ -6,4 +6,4 @@ public
 /npm-debug.log
 bitbucket-pipelines-test.yml
 bitbucket-pipelines.yml
-/.env
+.env*
