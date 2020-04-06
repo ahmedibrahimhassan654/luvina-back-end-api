@@ -26,7 +26,7 @@ module.exports = asyncHandler(async (req, res, next) => {
     .select('_id')
     .lean();
   const product = await Product.findByIdAndUpdate(
-    { _id: productId, branchId: branch._id, businessId: req.body.businessId },
+    productId, branchId, businessId,
     {
       $set: {
         isActive
