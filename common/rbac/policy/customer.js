@@ -4,8 +4,12 @@ const {
   AUTH_PHONE_VERIFICATION,
   AUTH_PHONE_CONFIRMATION
 } = require('../../../modules/auth/endPoints');
-
+const {
+ 
+  PRODUCT_GET_GETPRODUCTS
+} = require('../../../modules/product/endPoints');
 module.exports = [
+  PRODUCT_GET_GETPRODUCTS,
   AUTH_EMAIL_VERIFICATION,
   AUTH_EMAIL_CONFIRMATION,
   AUTH_PHONE_VERIFICATION,

@@ -1,14 +1,13 @@
 const to = require('await-to-js').default;
-const mandrill = require('node-mandrill');
-const { promisify } = require('util');
+const sgMail = require('@sendgrid/mail');
 
 const config = require('../config/config');
 
-const request = promisify(mandrill(config.manDrill.apiKey));
+sgMail.setApiKey(config.sendGrid.SENDGRID_API_KEY);
 
 /**
  * @function
- * Send mail via mail chimp
+ * Send mail via send grid
  *
  * @param {object} data
  * @param {string} data.message - The message  to be sent.
@@ -17,17 +16,14 @@ const request = promisify(mandrill(config.manDrill.apiKey));
  * @param {string} data.subject - The email subject.
  * @param {string} data.html - The email html.
  */
-module.exports = async data => {
-  const [err, result] = await to(
-    request('/messages/send', {
-      message: {
-        to: [{ email: data.email, name: data.name }],
-        from_email: config.manDrill.fromMail,
-        subject: data.subject,
-        text: data.html
-      }
-    })
-  );
+module.exports = async (data) => {
+  const msg = {
+    to: data.email,
+    from: config.sendGrid.fromMail,
+    subject: data.subject,
+    text: data.html
+  };
+  const [err, result] = await to(sgMail.send(msg));
   if (err) {
     throw new Error(err.message);
   }

@@ -6,7 +6,8 @@ const {
   healthyCheck,
   addProductController,
   updateProductController,
-  isActivateProductControler
+  activateProductController,
+  getProducts
 } = require('./controllers');
 const {
   addProductSchema,
@@ -15,34 +16,39 @@ const {
 } = require('./joi/validationSchemas');
 
 const {
-  PRODUCT_ADD_PRODUCT,
-  PRODUCT_UPDATE_PRODUCT,
-  PRODUCT_ACTIVATE_PRODUCT
+  PRODUCT_BUSINESS_ACTIVATE_PRODUCT,
+  PRODUCT_BUSINESS_ADD_PRODUCT,
+  PRODUCT_BUSINESS_UPDATE_PRODUCT,
+  PRODUCT_GET_GETPRODUCTS
 } = require('./endPoints');
 
 const router = express.Router();
 
 router.get('/healthy', healthyCheck);
-//create product
+
 router.post(
-  '/:branchId/product',
-  isAuthorized(PRODUCT_ADD_PRODUCT),
+  '/business',
+  isAuthorized(PRODUCT_BUSINESS_ADD_PRODUCT),
   requestValidator(addProductSchema),
   addProductController
 );
 
-//update product
+// update product
 router.put(
-  '/:productId',
-  isAuthorized(PRODUCT_UPDATE_PRODUCT),
+  '/business/:productId',
+  isAuthorized(PRODUCT_BUSINESS_UPDATE_PRODUCT),
   requestValidator(updateProductSchema),
   updateProductController
 );
 router.put(
-  '/:productId/activate',
-  isAuthorized(PRODUCT_ACTIVATE_PRODUCT),
-  requestValidator(isActivateProductControler),
-  isActivateProductControler
+  '/business/:productId/activate',
+  isAuthorized(PRODUCT_BUSINESS_ACTIVATE_PRODUCT),
+  requestValidator(activateProductSchema),
+  activateProductController
 );
-
+//GET ALL PRODUCTS
+router.get(
+  '/',
+  isAuthorized( PRODUCT_GET_GETPRODUCTS ),
+  getProducts );
 module.exports = router;
