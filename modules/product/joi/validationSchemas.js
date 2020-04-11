@@ -72,5 +72,14 @@ module.exports = {
     body: Joi.object().keys({
       isActive: Joi.boolean().required()
     })
-  }
+  },
+  
+  /**
+   * Get Product schema
+   */
+  getProductSchema: {
+    params: Joi.object().keys({
+      id: Joi.string().required()
+    })
+  },
 };

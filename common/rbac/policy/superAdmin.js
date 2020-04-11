@@ -14,7 +14,8 @@ const {
 } = require('../../../modules/category/endPoints');
 const {
  
-  PRODUCT_GET_GETPRODUCTS
+  PRODUCT_GET_GETPRODUCTS,
+  PRODUCT_GET_GETPRODUCT
 } = require('../../../modules/product/endPoints');
 module.exports = [
   AUTH_EMAIL_VERIFICATION,
@@ -26,5 +27,6 @@ module.exports = [
   CATEGORY_GET_CATEGORIES,
   CATEGORY_GET_CATEGORY,
   CATEGORY_UPDATE_CATEGORY,
-  PRODUCT_GET_GETPRODUCTS
+  PRODUCT_GET_GETPRODUCTS,
+  PRODUCT_GET_GETPRODUCT
 ];

@@ -3,6 +3,8 @@ const productEndPoints = Object.freeze({
   PRODUCT_BUSINESS_UPDATE_PRODUCT: 'product:businessUpdateProduct',
   PRODUCT_BUSINESS_ACTIVATE_PRODUCT: 'branch:businessActivateProduct',
   PRODUCT_GET_GETPRODUCTS: 'product:getProducts',
+  PRODUCT_GET_GETPRODUCT: 'product:getProduct',
+  
 });
 
 module.exports = productEndPoints;

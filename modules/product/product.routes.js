@@ -7,19 +7,22 @@ const {
   addProductController,
   updateProductController,
   activateProductController,
-  getProducts
+  getProducts,
+  getProductController
 } = require('./controllers');
 const {
   addProductSchema,
   updateProductSchema,
-  activateProductSchema
+  activateProductSchema,
+  getProductSchema
 } = require('./joi/validationSchemas');
 
 const {
   PRODUCT_BUSINESS_ACTIVATE_PRODUCT,
   PRODUCT_BUSINESS_ADD_PRODUCT,
   PRODUCT_BUSINESS_UPDATE_PRODUCT,
-  PRODUCT_GET_GETPRODUCTS
+  PRODUCT_GET_GETPRODUCTS,
+  PRODUCT_GET_GETPRODUCT
 } = require('./endPoints');
 
 const router = express.Router();
@@ -47,8 +50,12 @@ router.put(
   activateProductController
 );
 //GET ALL PRODUCTS
+router.get('/', isAuthorized(PRODUCT_GET_GETPRODUCTS), getProducts);
+//get single product
 router.get(
-  '/',
-  isAuthorized( PRODUCT_GET_GETPRODUCTS ),
-  getProducts );
+  '/:id',
+  isAuthorized(PRODUCT_GET_GETPRODUCT),
+  requestValidator(getProductSchema),
+  getProductController
+);
 module.exports = router;
