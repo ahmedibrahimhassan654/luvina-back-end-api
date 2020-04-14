@@ -76,4 +76,6 @@ app.listen(config.app.port, () => {
   console.log(
     `Luvina is up & running on port ${config.app.port} on environnement ${process.env.NODE_ENV}`
   );
+
+  
 });
