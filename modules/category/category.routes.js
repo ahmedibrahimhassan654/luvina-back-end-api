@@ -43,10 +43,7 @@ router.put(
   activateCategoryController
 );
 
-router.get(
-  '/',
-  isAuthorized( CATEGORY_GET_CATEGORIES ),
-  getCategoriesController );
+router.get('/', isAuthorized(CATEGORY_GET_CATEGORIES), getCategoriesController);
 
 router.get(
   '/:id',

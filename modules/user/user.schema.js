@@ -100,7 +100,29 @@ const UserSchema = new Schema(
     },
     resetPasswordToken: { type: String },
     resetPasswordExpire: { type: Date },
-    photo: { type: String, default: 'no-photo.jpg' }
+    photo: { type: String, default: 'no-photo.jpg' },
+    cart: {
+      type: {
+        total: { type: Number, default: 0 },
+        items: {
+          type: [
+            {
+              item: {
+                type: Schema.Types.ObjectId,
+                ref: 'Product',
+                autopopulate: {
+                  select: '_id name price'
+                }
+              },
+              quantity: { type: Number, default: 1 },
+              price: { type: Number, default: 0 }
+            }
+          ]
+        }
+      },
+      default: { total: 0, items: [] },
+      select: false
+    }
   },
   {
     timestamps: true

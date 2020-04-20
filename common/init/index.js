@@ -7,7 +7,7 @@ const connectDB = require('./init-db');
  *
  * @param {object} app - Express app.
  */
-module.exports = app => {
+module.exports = (app) => {
   initRoutes(app);
   connectDB();
 };

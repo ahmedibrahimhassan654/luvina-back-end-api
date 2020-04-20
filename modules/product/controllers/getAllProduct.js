@@ -12,9 +12,22 @@ module.exports = asyncHandler(async (req, res) => {
 
   const [list, count] = await Promise.all([
     Product.find({})
-      .select(
-        '_id categoryId branchId image gallery name price description currency sale isSaleActive stock'
-      )
+      .select({
+        _id: 1,
+        categoryId: 1,
+        branchId: 1,
+        image: 1,
+        gallery: 1,
+        name: 1,
+        price: 1,
+        description: 1,
+        currency: 1,
+        sale: 1,
+        isSaleActive: 1,
+        stock: 1,
+        createdBy: 1,
+        updatedBy: 1
+      })
       .skip((page - 1) * limit)
       .limit(limit)
       .sort('-createdAt')

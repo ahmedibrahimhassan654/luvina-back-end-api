@@ -9,7 +9,7 @@
   "scripts": {
     "lint": "eslint . --ext .js --fix",
     "start": "NODE_ENV=production node app",
-    "dev": "NODE_ENV=development&nodemon app"
+    "dev": "NODE_ENV=development nodemon app"
   },
   "author": "ahmed ibrahim",
   "license": "ISC",
@@ -48,6 +48,7 @@
     "request": "^2.88.2",
     "request-promise": "^4.2.5",
     "slugify": "^1.4.0",
+    "socket.io": "^2.3.0",
     "swagger-ui-express": "^4.1.4",
     "twilio": "^3.42.0",
     "xss-clean": "^0.1.1"

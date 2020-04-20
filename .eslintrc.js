@@ -49,11 +49,14 @@ module.exports = {
     ],
     'arrow-parens': ['error', 'always'],
     'object-curly-newline': [
-      'error',
+      'off',
       {
+        multiline: true,
+        consistent: true,
+        ObjectExpression: 'always',
         ObjectPattern: { multiline: true },
-        ImportDeclaration: 'never',
-        ExportDeclaration: { multiline: true, minProperties: 3 }
+        ImportDeclaration: 'always',
+        ExportDeclaration: { multiline: true, minProperties: 2 }
       }
     ],
     camelcase: ['error', { properties: 'never', ignoreDestructuring: true }],

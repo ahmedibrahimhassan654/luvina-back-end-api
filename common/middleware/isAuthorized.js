@@ -8,7 +8,7 @@ const passport = require('passport');
 const ErrorResponse = require('../utils/errorResponse');
 const rbac = require('../rbac/rbac');
 
-const isAuthorized = endPointName => {
+const isAuthorized = (endPointName) => {
   return (req, res, next) => {
     try {
       if (

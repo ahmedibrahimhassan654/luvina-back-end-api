@@ -6,10 +6,10 @@ const ErrorResponse = require('../utils/errorResponse');
  *
  * @param {object} schema - Object contains validation schemas to the request
  */
-module.exports = schema => {
+module.exports = (schema) => {
   return (req, res, next) => {
     const validations = [];
-    [('headers', 'params', 'query', 'body')].forEach(key => {
+    [('headers', 'params', 'query', 'body')].forEach((key) => {
       if (schema[key]) {
         const validation = schema[key].validate(req[key]);
         if (validation.error) {

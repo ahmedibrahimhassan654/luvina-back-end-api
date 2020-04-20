@@ -73,7 +73,6 @@ module.exports = {
       isActive: Joi.boolean().required()
     })
   },
-  
   /**
    * Get Product schema
    */
@@ -81,5 +80,5 @@ module.exports = {
     params: Joi.object().keys({
       id: Joi.string().required()
     })
-  },
+  }
 };

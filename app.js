@@ -1,6 +1,7 @@
 require('dotenv').config(); // This loads the defined variables from .env
 
 const express = require('express');
+const http = require('http');
 const helmet = require('helmet');
 const xss = require('xss-clean');
 const cors = require('cors');
@@ -24,6 +25,7 @@ const limiter = rateLimit({
 
 // Express App
 const app = express();
+const server = http.createServer(app);
 // Swagger URL
 app.use('/api/v0/explore', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
@@ -69,14 +71,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/images', express.static(path.join(__dirname, 'public', 'images')));
 app.use(passport.initialize());
 // Initialize app
-initApp(app);
+initApp(app, server);
 
 app.listen(config.app.port, () => {
   // eslint-disable-next-line no-console
   console.log(
     `Luvina is up & running on port ${config.app.port} on environnement ${process.env.NODE_ENV}`
   );
-
-  
-  
 });
